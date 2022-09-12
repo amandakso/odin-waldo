@@ -24,3 +24,7 @@ nav {
   color: white;
   margin-right: 50px;
 }
+
+#background {
+  height: 150vh;
+}
