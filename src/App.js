@@ -7,6 +7,19 @@ import Game from './components/pages/Game';
 
 
 function App() {
+  const getClickedCoordinates = (event) => {
+    let image = document.getElementById('background');
+    let x = event.nativeEvent.offsetX;
+    let y = event.nativeEvent.offsetY;
+    let w = image.width;
+    let h = image.height;
+    console.log("x: " + x);
+    console.log("y: " + y);
+    console.log("w: " + w);
+    console.log("h: " + h);
+    console.log("final x: " + (x / w));
+    console.log("final y: " + (y / h));
+}
   return (
     <div className="App">
       <BrowserRouter>
@@ -14,7 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/game" element={<Game />} />
+          <Route path="/game" element={<Game onClick={getClickedCoordinates} />} />
         </Routes>
       </BrowserRouter>
     </div>
