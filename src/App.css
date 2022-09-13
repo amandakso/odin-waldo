@@ -28,3 +28,9 @@ nav {
 #background {
   height: 150vh;
 }
+
+#pokemon {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
