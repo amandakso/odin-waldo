@@ -12,6 +12,8 @@ function App() {
   const [offsetX, setOffsetX] = useState(0);
   const [offsetY, setOffsetY] = useState(0);
   const [pikachuFound, setPikachuFound] = useState(false);
+  const [munchlaxFound, setMunchlaxFound] = useState(false);
+  const [espeonFound, setEspeonFound] = useState(false);
 
   const getClickedCoordinates = (event) => {
     let image = document.getElementById('background');
@@ -56,6 +58,7 @@ function App() {
           let d = coordinates.d;
           let distance = getDistance(x, y, offsetX, offsetY);
           if (distance <= d) {
+            setPikachuFound(true);
             console.log("found pikachu");
           } else {
             console.log("have not found pikachu");
@@ -71,6 +74,7 @@ function App() {
           let d = coordinates.d;
           let distance = getDistance(x, y, offsetX, offsetY);
           if (distance <= d) {
+            setMunchlaxFound(true);
             console.log("found munchlax");
           } else {
             console.log("have not found munchlax");
@@ -87,6 +91,7 @@ function App() {
           let d = coordinates.d;
           let distance = getDistance(x, y, offsetX, offsetY);
           if (distance <= d) {
+            setEspeonFound(true);
             console.log("found espeon");
           } else {
             console.log("have not found espeon");
@@ -106,7 +111,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/game" element={<Game onClick={getClickedCoordinates} onCheck={checkAnswer} />} />
+          <Route path="/game" element={<Game pikachu={pikachuFound} munchlax={munchlaxFound} espeon={espeonFound} onClick={getClickedCoordinates} onCheck={checkAnswer} />} />
         </Routes>
       </BrowserRouter>
     </div>
