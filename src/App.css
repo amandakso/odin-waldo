@@ -6,6 +6,7 @@ nav {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  width: 151%;
   min-height: 10vh;
   background-color: rgb(28, 20, 76);
   color: white;
@@ -25,6 +26,20 @@ nav {
   margin-right: 50px;
 }
 
+.pokemonList {
+  display: grid;
+  justify-content: flex-start;
+  grid-auto-flow: column;
+  background-color: white;
+  width: 151%;
+  gap: 50px;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  padding: 20px;
+  top: 0;
+  right: 0;
+}
+
 #background {
   height: 150vh;
 }
@@ -33,4 +48,8 @@ nav {
   display: none;
   position: absolute;
   z-index: 1;
+}
+
+#pikachu, #munchlax, #espeon {
+  color: red;
 }
