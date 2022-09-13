@@ -1,4 +1,5 @@
-import firebase from "firebase/app";
+import firebase from "firebase/compat/app";
+import { getFirestore, doc, getDoc } from "firebase/firestore/lite";
 
 
 // TODO: Replace the following with your app's Firebase project configuration
@@ -13,5 +14,27 @@ const firebaseConfig = {
   };
 
 const app = firebase.initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-export default app;
+async function getDatabaseAnswers(pokemon) {
+  const docRef = doc(db, "level1", "answers");
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    switch(pokemon) {
+      case "pikachu":
+        return docSnap.data().coordinates1;
+      case "munchlax":
+        return docSnap.data().coordinates2;
+      case "espeon":
+          return docSnap.data().coordinates3;
+      default:
+        return 0;
+    }
+  } else {
+    // doc.data() will be undefined in this case
+    return 1;
+  }
+}
+
+export { getDatabaseAnswers };

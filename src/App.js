@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { getDatabaseAnswers } from './firebase/config';
 import Home from './components/pages/Home';
 import Navbar from './components/pages/Navbar';
 import Leaderboard from './components/pages/Leaderboard';
@@ -40,14 +41,30 @@ function App() {
     let pokemon = event.target.value;
     console.log("x: " + offsetX);
     console.log("y: " + offsetY);
+    console.log(getDatabaseAnswers());
     switch(pokemon) {
       case "pikachu":
+        (async () => {
+          const coordinates = await getDatabaseAnswers("pikachu");
+          let x = coordinates.x;
+          let y = coordinates.y;
+        })();
         console.log("pikachu");
         break;
       case "munchlax":
+        (async () => {
+          const coordinates = await getDatabaseAnswers("munchlax");
+          let x = coordinates.x;
+          let y = coordinates.y;
+        })();
         console.log("munchlax");
         break;
       case "espeon":
+        (async () => {
+          const coordinates = await getDatabaseAnswers("espeon");
+          let x = coordinates.x;
+          let y = coordinates.y;
+        })();
         console.log("espeon");
         break;
       default:
