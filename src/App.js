@@ -9,8 +9,9 @@ import Game from './components/pages/Game';
 
 
 function App() {
-  const [offsetX, setOffsetX] = useState();
-  const [offsetY, setOffsetY] = useState();
+  const [offsetX, setOffsetX] = useState(0);
+  const [offsetY, setOffsetY] = useState(0);
+  const [pikachuFound, setPikachuFound] = useState(false);
 
   const getClickedCoordinates = (event) => {
     let image = document.getElementById('background');

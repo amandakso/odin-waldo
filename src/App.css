@@ -6,7 +6,6 @@ nav {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 151%;
   min-height: 10vh;
   background-color: rgb(28, 20, 76);
   color: white;
@@ -31,7 +30,6 @@ nav {
   justify-content: flex-start;
   grid-auto-flow: column;
   background-color: white;
-  width: 151%;
   gap: 50px;
   position: -webkit-sticky; /* Safari */
   position: sticky;
@@ -51,5 +49,6 @@ nav {
 }
 
 #pikachu, #munchlax, #espeon {
+  display: none;
   color: red;
 }
