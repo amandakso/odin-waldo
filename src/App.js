@@ -36,6 +36,10 @@ function App() {
   }
 
   const checkAnswer = (event) => {
+    const getDistance = (x1, y1, x2, y2) => {
+      let d = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2) * 1.0);
+      return d;
+    };
     let dropdown = document.getElementById('pokemon');
     dropdown.style.display = "none";
     let pokemon = event.target.value;
@@ -48,6 +52,13 @@ function App() {
           const coordinates = await getDatabaseAnswers("pikachu");
           let x = coordinates.x;
           let y = coordinates.y;
+          let d = coordinates.d;
+          let distance = getDistance(x, y, offsetX, offsetY);
+          if (distance <= d) {
+            console.log("found pikachu");
+          } else {
+            console.log("have not found pikachu");
+          }
         })();
         console.log("pikachu");
         break;
@@ -56,6 +67,14 @@ function App() {
           const coordinates = await getDatabaseAnswers("munchlax");
           let x = coordinates.x;
           let y = coordinates.y;
+          let d = coordinates.d;
+          let distance = getDistance(x, y, offsetX, offsetY);
+          if (distance <= d) {
+            console.log("found munchlax");
+          } else {
+            console.log("have not found munchlax");
+          }
+          
         })();
         console.log("munchlax");
         break;
@@ -64,6 +83,13 @@ function App() {
           const coordinates = await getDatabaseAnswers("espeon");
           let x = coordinates.x;
           let y = coordinates.y;
+          let d = coordinates.d;
+          let distance = getDistance(x, y, offsetX, offsetY);
+          if (distance <= d) {
+            console.log("found espeon");
+          } else {
+            console.log("have not found espeon");
+          }
         })();
         console.log("espeon");
         break;
