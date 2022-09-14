@@ -11,9 +11,23 @@ import Game from './components/pages/Game';
 function App() {
   const [offsetX, setOffsetX] = useState(0);
   const [offsetY, setOffsetY] = useState(0);
+  const [player, setPlayer] = useState("Pokemon Trainer");
   const [pikachuFound, setPikachuFound] = useState(false);
   const [munchlaxFound, setMunchlaxFound] = useState(false);
   const [espeonFound, setEspeonFound] = useState(false);
+
+  const changeName = (e) => {
+    let playerName = e.target.value;
+    if (playerName.length > 1) {
+      if (playerName.length > 25) {
+        setPlayer(playerName.slice(0,25) + "...");
+      } else {
+        setPlayer(playerName);
+      }
+    } else {
+      setPlayer("Pokemon Trainer");
+    }
+  }
 
   const getClickedCoordinates = (event) => {
     let image = document.getElementById('background');
@@ -109,9 +123,9 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home player={player} onChange={changeName}/>} />
           <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/game" element={<Game pikachu={pikachuFound} munchlax={munchlaxFound} espeon={espeonFound} onClick={getClickedCoordinates} onCheck={checkAnswer} />} />
+          <Route path="/game" element={<Game player={player} pikachu={pikachuFound} munchlax={munchlaxFound} espeon={espeonFound} onClick={getClickedCoordinates} onCheck={checkAnswer} />} />
         </Routes>
       </BrowserRouter>
     </div>
