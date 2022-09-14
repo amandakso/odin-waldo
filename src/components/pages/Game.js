@@ -5,14 +5,15 @@ import Dropdown from "../Dropdown";
 const Game = (props) => {
     const [timer, setTimer] = useState(0);
     const [displayTimer, setDisplayTimer] = useState(0);
+    const [totalTime, setTotalTime] = useState(0);
 
 
     // add time to timer
     useEffect(() => {
         let interval;
         if (props.gameOver) {
+            setTotalTime(timer);
             clearInterval(interval);
-            setTimer(0);
         } else {
             interval = setInterval(() => {
                 setTimer((timer) => timer + 1);
@@ -21,7 +22,7 @@ const Game = (props) => {
         return () => {
             clearInterval(interval);
         }
-    }, [props.gameOver])
+    }, [props.gameOver, timer])
     // display timer
     useEffect(() => {
         let currentTime = timer;
