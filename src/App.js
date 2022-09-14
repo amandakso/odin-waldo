@@ -16,7 +16,6 @@ function App() {
   const [munchlaxFound, setMunchlaxFound] = useState(false);
   const [espeonFound, setEspeonFound] = useState(false);
   const [gameOver, setGameOver]= useState(false);
-  const [timeEllapsed, setTimeEllapsed] = useState(0);
 
   const changeName = (e) => {
     let playerName = e.target.value;
