@@ -30,6 +30,14 @@ function App() {
     }
   }
 
+  const setUpGame = () => {
+    setPikachuFound(false);
+    setMunchlaxFound(false);
+    setEspeonFound(false);
+    setGameOver(false);
+    console.log('game set up!');
+  }
+
   // end game
   useEffect(() => {
     if (pikachuFound && munchlaxFound && espeonFound) {
@@ -131,7 +139,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home player={player} onChange={changeName}/>} />
+          <Route path="/" element={<Home player={player} onChange={changeName} setUp={setUpGame}/>} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/game" element={<Game player={player} gameOver={gameOver} pikachu={pikachuFound} munchlax={munchlaxFound} espeon={espeonFound} onClick={getClickedCoordinates} onCheck={checkAnswer} />} />
         </Routes>
