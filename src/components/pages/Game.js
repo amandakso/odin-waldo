@@ -35,30 +35,24 @@ const Game = (props) => {
 
     useEffect(() => {
         let pikachu = document.getElementById('pikachu');
-        let message = document.getElementById('message');
         if(props.pikachu === true) {
             pikachu.style.display = "inline-block";
-            message.innerText = "You Found Pikachu! Find the remaining pokemon!"
         } else {
             pikachu.style.display = "none";
         }
     }, [props.pikachu])
     useEffect(() => {
         let munchlax = document.getElementById('munchlax');
-        let message = document.getElementById('message');
         if(props.munchlax === true) {
             munchlax.style.display = "inline-block";
-            message.innerText = "You Found Munchlax! Find the remaining pokemon!"
         } else {
             munchlax.style.display = "none";
         }
     }, [props.munchlax])
     useEffect(() => {
         let espeon = document.getElementById('espeon');
-        let message = document.getElementById('message');
         if(props.espeon === true) {
             espeon.style.display = "inline-block";
-            message.innerText = "You Found Espeon! Find the remaining pokemon!"
         } else {
             espeon.style.display = "none";
         }

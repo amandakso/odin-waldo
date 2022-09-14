@@ -79,6 +79,7 @@ function App() {
     console.log("x: " + offsetX);
     console.log("y: " + offsetY);
     console.log(getDatabaseAnswers());
+    let message = document.getElementById('message');
     switch(pokemon) {
       case "pikachu":
         (async () => {
@@ -89,8 +90,10 @@ function App() {
           let distance = getDistance(x, y, offsetX, offsetY);
           if (distance <= d) {
             setPikachuFound(true);
+            message.innerText = "You found Pikachu! Find the remaining pokemon!"
             console.log("found pikachu");
           } else {
+            message.innerText = "That's not Pikachu, try again!"
             console.log("have not found pikachu");
           }
         })();
@@ -105,8 +108,10 @@ function App() {
           let distance = getDistance(x, y, offsetX, offsetY);
           if (distance <= d) {
             setMunchlaxFound(true);
+            message.innerText = "You found Munchlax! Find the remaining pokemon!"
             console.log("found munchlax");
           } else {
+            message.innerText = "That's not Munchlax, try again!"
             console.log("have not found munchlax");
           }
           
@@ -122,8 +127,10 @@ function App() {
           let distance = getDistance(x, y, offsetX, offsetY);
           if (distance <= d) {
             setEspeonFound(true);
+            message.innerText = "You found Espeon! Find the remaining pokemon!"
             console.log("found espeon");
           } else {
+            message.innerText = "That's not Espeon, try again!"
             console.log("have not found espeon");
           }
         })();
