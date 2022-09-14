@@ -15,6 +15,7 @@ function App() {
   const [pikachuFound, setPikachuFound] = useState(false);
   const [munchlaxFound, setMunchlaxFound] = useState(false);
   const [espeonFound, setEspeonFound] = useState(false);
+  const [timeEllapsed, setTimeEllapsed] = useState(0);
 
   const changeName = (e) => {
     let playerName = e.target.value;
@@ -125,7 +126,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home player={player} onChange={changeName}/>} />
           <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/game" element={<Game player={player} pikachu={pikachuFound} munchlax={munchlaxFound} espeon={espeonFound} onClick={getClickedCoordinates} onCheck={checkAnswer} />} />
+          <Route path="/game" element={<Game player={player} time={timeEllapsed} pikachu={pikachuFound} munchlax={munchlaxFound} espeon={espeonFound} onClick={getClickedCoordinates} onCheck={checkAnswer} />} />
         </Routes>
       </BrowserRouter>
     </div>

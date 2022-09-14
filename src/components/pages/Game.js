@@ -1,8 +1,30 @@
-import React, { useEffect }from "react";
+import React, { useState, useEffect }from "react";
 import pokemon from "../../assets/pokemon.png";
 import Dropdown from "../Dropdown";
 
 const Game = (props) => {
+    const [timer, setTimer] = useState(0);
+    const [displayTimer, setDisplayTimer] = useState(0);
+
+    // add time to timer
+    useEffect(() => {
+        let interval = setInterval(() => {
+            setTimer((timer) => timer + 1);
+        },1000)
+        return () => {
+            clearInterval(interval);
+        }
+    }, [timer])
+    // display timer
+    useEffect(() => {
+        let currentTime = timer;
+        let hours = Math.floor(currentTime / 3600).toString().padStart(2,0);
+        let minutes = Math.floor((currentTime - hours * 3600) / 60).toString().padStart(2,0);
+        let seconds = (currentTime - (hours * 3600 + minutes * 60)).toString().padStart(2,0);
+        let display = hours + ":" + minutes + ":" + seconds;
+        setDisplayTimer(display);
+    },[timer])
+
     useEffect(() => {
         let pikachu = document.getElementById('pikachu');
         let message = document.getElementById('message');
@@ -44,7 +66,7 @@ const Game = (props) => {
 
     return (
         <div>
-            <h2 className="pokemonList">{props.player}, find the following pokemon: <div><span id="pikachu">&#9683;</span>Pikachu</div><div><span id="munchlax">&#9683;</span>Munchlax</div><div><span id="espeon">&#9683;</span>Espeon</div><div id="message"></div></h2>
+            <h2 className="pokemonList"><span>{displayTimer}</span>{props.player}, find the following pokemon: <div><span id="pikachu">&#9683;</span>Pikachu</div><div><span id="munchlax">&#9683;</span>Munchlax</div><div><span id="espeon">&#9683;</span>Espeon</div><div id="message"></div></h2>
             <img id="background" src={pokemon} alt={"pokemon"} onClick={props.onClick}></img>
             <Dropdown pikachu={props.pikachu} munchlax={props.munchlax} espeon={props.espeon} onCheck={props.onCheck}/>
         </div>
