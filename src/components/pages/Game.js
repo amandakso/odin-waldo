@@ -6,15 +6,22 @@ const Game = (props) => {
     const [timer, setTimer] = useState(0);
     const [displayTimer, setDisplayTimer] = useState(0);
 
+
     // add time to timer
     useEffect(() => {
-        let interval = setInterval(() => {
-            setTimer((timer) => timer + 1);
-        },1000)
+        let interval;
+        if (props.gameOver) {
+            clearInterval(interval);
+            setTimer(0);
+        } else {
+            interval = setInterval(() => {
+                setTimer((timer) => timer + 1);
+            },1000)
+        }
         return () => {
             clearInterval(interval);
         }
-    }, [timer])
+    }, [props.gameOver])
     // display timer
     useEffect(() => {
         let currentTime = timer;
@@ -58,10 +65,10 @@ const Game = (props) => {
 
     useEffect(() => {
         let message = document.getElementById('message');
-        if (props.pikachu && props.munchlax && props.espeon) {
+        if (props.gameOver) {
             message.innerText = 'All pokemon have been found!';
         }
-    }, [props.pikachu, props.munchlax, props.espeon])
+    }, [props.gameOver])
 
 
     return (

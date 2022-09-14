@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { getDatabaseAnswers } from './firebase/config';
 import Home from './components/pages/Home';
@@ -30,6 +30,13 @@ function App() {
       setPlayer("Pokemon Trainer");
     }
   }
+
+  // end game
+  useEffect(() => {
+    if (pikachuFound && munchlaxFound && espeonFound) {
+      setGameOver(true);
+    }
+  },[pikachuFound, munchlaxFound, espeonFound])
 
   const getClickedCoordinates = (event) => {
     let image = document.getElementById('background');
@@ -127,7 +134,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home player={player} onChange={changeName}/>} />
           <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/game" element={<Game player={player} time={timeEllapsed} pikachu={pikachuFound} munchlax={munchlaxFound} espeon={espeonFound} onClick={getClickedCoordinates} onCheck={checkAnswer} />} />
+          <Route path="/game" element={<Game player={player} gameOver={gameOver} pikachu={pikachuFound} munchlax={munchlaxFound} espeon={espeonFound} onClick={getClickedCoordinates} onCheck={checkAnswer} />} />
         </Routes>
       </BrowserRouter>
     </div>
