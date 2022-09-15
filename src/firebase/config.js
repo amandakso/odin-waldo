@@ -1,5 +1,5 @@
 import firebase from "firebase/compat/app";
-import { getFirestore, doc, getDoc } from "firebase/firestore/lite";
+import { getFirestore, doc, getDoc, addDoc, collection, serverTimestamp } from "firebase/firestore/lite";
 
 
 // TODO: Replace the following with your app's Firebase project configuration
@@ -36,5 +36,13 @@ async function getDatabaseAnswers(pokemon) {
     return 1;
   }
 }
+async function addScore(name, time) {
+  const docRef = await addDoc(collection(db, "level1", "scores", "users"), {
+    name: name,
+    date: serverTimestamp(),
+    time: time,
+  });
+  console.log(docRef.id);
+}
 
-export { getDatabaseAnswers };
+export { getDatabaseAnswers, addScore };

@@ -1,18 +1,18 @@
 import React, { useState, useEffect }from "react";
 import pokemon from "../../assets/pokemon.png";
 import Dropdown from "../Dropdown";
+import { addScore } from "../../firebase/config";
 
 const Game = (props) => {
     const [timer, setTimer] = useState(0);
     const [displayTimer, setDisplayTimer] = useState(0);
-    const [totalTime, setTotalTime] = useState(0);
 
 
     // add time to timer
     useEffect(() => {
         let interval;
         if (props.gameOver) {
-            setTotalTime(timer);
+            addScore(props.player, timer);
             clearInterval(interval);
         } else {
             interval = setInterval(() => {
@@ -22,7 +22,7 @@ const Game = (props) => {
         return () => {
             clearInterval(interval);
         }
-    }, [props.gameOver, timer])
+    }, [props.gameOver, props.player, timer])
     // display timer
     useEffect(() => {
         let currentTime = timer;
