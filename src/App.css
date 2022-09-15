@@ -2,11 +2,17 @@
   text-align: center;
 }
 
+body {
+  width: 100%;
+  height: 100%;
+}
+
 nav {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   min-height: 10vh;
+  width: 100%;
   background-color: rgb(28, 20, 76);
   color: white;
 }
@@ -25,6 +31,11 @@ nav {
   margin-right: 50px;
 }
 
+#start {
+  text-decoration: none;
+  color: black;
+}
+
 .pokemonList {
   display: grid;
   justify-content: flex-start;
@@ -39,7 +50,8 @@ nav {
 }
 
 #background {
-  height: 150vh;
+  height: 200vh;
+  width: auto;
 }
 
 #pokemon {
