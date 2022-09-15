@@ -35,7 +35,7 @@ function App() {
     setMunchlaxFound(false);
     setEspeonFound(false);
     setGameOver(false);
-    console.log('game set up!');
+    console.log('game set up/ reset!');
   }
 
   // end game
@@ -144,7 +144,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        <Navbar setUp={setUpGame}/>
         <Routes>
           <Route path="/" element={<Home player={player} onChange={changeName} setUp={setUpGame}/>} />
           <Route path="/leaderboard" element={<Leaderboard />} />
