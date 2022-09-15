@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getScores } from "../../firebase/config";
 
 const Leaderboard = () => {
+
     const [scores, setScores] = useState([]);
     useEffect(() => {
         (async () => {
@@ -9,6 +10,9 @@ const Leaderboard = () => {
             setScores(data);
         })();
     }, [])
+
+
+
 
     const displayTime = (time) => {
         let hours = Math.floor(time / 3600).toString().padStart(2,0);

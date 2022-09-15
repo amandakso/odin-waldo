@@ -7,7 +7,6 @@ const Game = (props) => {
     const [timer, setTimer] = useState(0);
     const [displayTimer, setDisplayTimer] = useState(0);
 
-
     // add time to timer
     useEffect(() => {
         let interval;
