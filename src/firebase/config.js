@@ -1,5 +1,5 @@
 import firebase from "firebase/compat/app";
-import { getFirestore, doc, getDoc, addDoc, collection, serverTimestamp } from "firebase/firestore/lite";
+import { getFirestore, doc, getDoc, addDoc, collection, serverTimestamp, query, limit, where, getDocs } from "firebase/firestore/lite";
 
 
 // TODO: Replace the following with your app's Firebase project configuration
@@ -42,7 +42,21 @@ async function addScore(name, time) {
     date: serverTimestamp(),
     time: time,
   });
-  console.log(docRef.id);
 }
+async function getScores() {
+  let scores = [];
+  const q = query(collection(db, "level1", "scores", "users"), where("time", "!=", null), limit(25));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    scores = scores.concat(doc);
+  })
+  return scores;
+}  
+/*
+const querySnapshot = await getDocs(collection(db, "cities"));
+querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  console.log(doc.id, " => ", doc.data());
+}); */
 
-export { getDatabaseAnswers, addScore };
+export { getDatabaseAnswers, addScore, getScores };
