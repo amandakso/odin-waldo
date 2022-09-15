@@ -65,14 +65,14 @@ const Game = (props) => {
     useEffect(() => {
         let message = document.getElementById('message');
         if (props.gameOver) {
-            message.innerText = 'All pokemon have been found!';
+            message.innerText = 'All pokemon have been caught!';
         }
     }, [props.gameOver])
 
 
     return (
         <div>
-            <h2 className="pokemonList"><span>{displayTimer}</span>{props.player}, find the following pokemon: <div><span id="pikachu">&#9683;</span>Pikachu</div><div><span id="munchlax">&#9683;</span>Munchlax</div><div><span id="espeon">&#9683;</span>Espeon</div><div id="message"></div></h2>
+            <h2 className="pokemonList"><span>{displayTimer}</span>{props.player}, catch the following pokemon: <div><span id="pikachu">&#9683;</span>Pikachu</div><div><span id="munchlax">&#9683;</span>Munchlax</div><div><span id="espeon">&#9683;</span>Espeon</div><div id="message"></div></h2>
             <img id="background" src={pokemon} alt={"pokemon"} onClick={props.onClick}></img>
             <Dropdown pikachu={props.pikachu} munchlax={props.munchlax} espeon={props.espeon} onCheck={props.onCheck}/>
         </div>

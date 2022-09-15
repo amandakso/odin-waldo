@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -5,6 +6,7 @@
 body {
   min-width: 100%;
   width: fit-content;
+  font-family: 'Press Start 2P', cursive;
 }
 
 nav {
@@ -13,8 +15,8 @@ nav {
   align-items: center;
   min-height: 10vh;
   max-width: 200%;
-  background-color: rgb(28, 20, 76);
-  color: white;
+  background-color: #FB1B1B;
+  color: black;
 }
 
 .nav-links {
@@ -27,8 +29,12 @@ nav {
 
 .nav-link {
   text-decoration: none;
-  color: white;
   margin-right: 50px;
+  color: black;
+}
+
+#playerName {
+  margin-right: 10px;
 }
 
 #start {
@@ -62,7 +68,8 @@ nav {
 
 #pikachu, #munchlax, #espeon {
   display: none;
-  color: red;
+  margin-right: 5px;
+  color: #FB1B1B;
 }
 .leaders {
   display: grid;
@@ -75,7 +82,7 @@ nav {
 }
 
 .player {
-  min-width: 25ch;
+  min-width: 35ch;
   display: grid;
   justify-content: flex-start;
 }

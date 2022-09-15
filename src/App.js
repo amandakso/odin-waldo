@@ -90,7 +90,7 @@ function App() {
           let distance = getDistance(x, y, offsetX, offsetY);
           if (distance <= d) {
             setPikachuFound(true);
-            message.innerText = "You found Pikachu! Find the remaining pokemon!"
+            message.innerText = "You caught Pikachu! Find the remaining pokemon!"
             console.log("found pikachu");
           } else {
             message.innerText = "That's not Pikachu, try again!"
@@ -108,7 +108,7 @@ function App() {
           let distance = getDistance(x, y, offsetX, offsetY);
           if (distance <= d) {
             setMunchlaxFound(true);
-            message.innerText = "You found Munchlax! Find the remaining pokemon!"
+            message.innerText = "You caught Munchlax! Find the remaining pokemon!"
             console.log("found munchlax");
           } else {
             message.innerText = "That's not Munchlax, try again!"
@@ -127,7 +127,7 @@ function App() {
           let distance = getDistance(x, y, offsetX, offsetY);
           if (distance <= d) {
             setEspeonFound(true);
-            message.innerText = "You found Espeon! Find the remaining pokemon!"
+            message.innerText = "You caught Espeon! Find the remaining pokemon!"
             console.log("found espeon");
           } else {
             message.innerText = "That's not Espeon, try again!"
