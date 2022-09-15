@@ -7,38 +7,30 @@ const Leaderboard = () => {
         (async () => {
             const data = await getScores();
             setScores(data);
-            data.map((doc, index) => {
-                console.log(doc.data().date.toDate().toDateString().slice(4));
-                return 5;
-            })
         })();
     }, [])
 
-/*
-    {scores.map((score, index) => {
-        return(
-            <div key={index}>
-                <div>{index}</div>
-                <div>{score.data().name}</div>
-                <div>{score.data().time}</div>
-                <div>{score.data().date}</div>
-            </div>
-        )
-    })}
-    */
+    const displayTime = (time) => {
+        let hours = Math.floor(time / 3600).toString().padStart(2,0);
+        let minutes = Math.floor((time - hours * 3600) / 60).toString().padStart(2,0);
+        let seconds = (time - (hours * 3600 + minutes * 60)).toString().padStart(2,0);
+        let display = hours + ":" + minutes + ":" + seconds;
+        return display;
+    }
     return (
         <div>
-            <h1>Leaderboard Page</h1>
-            {scores.map((score, index) => {
-                return(
-                <div key={index}>
-                <div>{index}</div>
-                <div>{score.data().name}</div>
-                <div>{score.data().time}</div>
-                <div>{score.data().date.toDate().toDateString().slice(4)}</div>
-                </div>
-                )
-            })}
+            <h1>Leaderboard</h1>
+            <div className="leaders">
+                {scores.map((score, index) => {
+                    return(
+                    <div className="leader" key={index}>
+                    <p className="player">{index + 1 + "."}{score.data().name}</p>
+                    <p>{displayTime(score.data().time)}</p>
+                    <p>{score.data().date.toDate().toDateString().slice(4)}</p>
+                    </div>
+                    )
+                })}
+            </div>
         </div>
     );
 };

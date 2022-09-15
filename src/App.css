@@ -52,3 +52,18 @@ nav {
   display: none;
   color: red;
 }
+.leaders {
+  display: grid;
+  justify-content: center;
+}
+.leader {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 20px;
+}
+
+.player {
+  min-width: 25ch;
+  display: grid;
+  justify-content: flex-start;
+}
