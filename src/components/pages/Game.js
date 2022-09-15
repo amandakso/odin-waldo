@@ -12,7 +12,6 @@ const Game = (props) => {
     useEffect(() => {
         let interval;
         if (props.gameOver) {
-            addScore(props.player, timer);
             clearInterval(interval);
         } else {
             interval = setInterval(() => {
@@ -32,6 +31,12 @@ const Game = (props) => {
         let display = hours + ":" + minutes + ":" + seconds;
         setDisplayTimer(display);
     },[timer])
+
+    useEffect(() => {
+        if (props.gameOver) {
+            addScore(props.player, timer);
+        }
+    }, [props.gameOver, props.player, timer])
 
     useEffect(() => {
         let pikachu = document.getElementById('pikachu');
