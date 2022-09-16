@@ -149,6 +149,7 @@ function App() {
           <Route path="/" element={<Home player={player} onChange={changeName} setUp={setUpGame}/>} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/game" element={<Game player={player} gameOver={gameOver} pikachu={pikachuFound} munchlax={munchlaxFound} espeon={espeonFound} onClick={getClickedCoordinates} onCheck={checkAnswer} />} />
+          <Route path="*" element={<Home player={player} onChange={changeName} setUp={setUpGame}/>} />
         </Routes>
       </BrowserRouter>
     </div>
